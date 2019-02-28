@@ -5,14 +5,12 @@
     </div>
     <div class="menu float-left">
         <ul>
-            <li><a routerLink="/">Home</a></li>
-            <li><a routerLink="FavoriteBooks">Favorite boocks</a></li>
+            <li *ngFor="let item of menu"><a routerLink={{item.routerLink}}>{{item.text}}</a></li>
         </ul>
     </div>
     <div class="tongue float-right">
         <ul>
-            <li><a routerLink="#"><img src="assets/img/ru.png" alt="ru"></a></li>
-            <li><a routerLink="#"><img src="assets/img/us.png" alt="us"></a></li>
+            <li *ngFor="let item of img"><a routerLink={{item.routerLink}}><img src={{item.src}} alt={{item.alt}}></a></li>
         </ul>
     </div>
 </header>
