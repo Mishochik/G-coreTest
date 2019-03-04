@@ -1,14 +1,6 @@
 .float-left {
     float: left;
 }
-.float-right {
-    float: right;
-}
-ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
 
 .heder {
     position: fixed;
@@ -28,8 +20,14 @@ h1 {
     font-size: 28px;
     cursor: default;
 }
+
 .menu {
     margin: 0 20px;
+}
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 .menu li {
     float: left;
@@ -48,22 +46,32 @@ h1 {
 .active{
     background: #ffffff36;
 }
-.tongue {
-    padding: 23px;
-}
-.tongue li {
-    float: left;
-}
-.tongue li + li  {
-    margin-left: 20px;
-} 
-.tongue img {
-    width: 30px;
-} 
 
 main {
-    position: relative;
-    top: 70px; 
+    position: absolute;
+    top: 70px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 15px;
+    overflow: overlay;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.3);
 } 
 
 
+::-webkit-scrollbar{
+    width: 10px;
+}
+::-webkit-scrollbar-thumb{
+    border-width: 1px 1px 1px 2px;
+    border-color: #777;
+    background-color: #aaa;
+}
+::-webkit-scrollbar-thumb:hover{
+    border-width: 1px 1px 1px 2px;
+    border-color: #555;
+    background-color: #777;
+}
+::-webkit-scrollbar-track{
+    border-width:0;
+}

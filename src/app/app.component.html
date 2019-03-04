@@ -8,11 +8,7 @@
             <li *ngFor="let item of menu"><a routerLink={{item.routerLink}}>{{item.text}}</a></li>
         </ul>
     </div>
-    <div class="tongue float-right">
-        <ul>
-            <li *ngFor="let item of img"><a routerLink={{item.routerLink}}><img src={{item.src}} alt={{item.alt}}></a></li>
-        </ul>
-    </div>
+    <app-translation></app-translation>
 </header>
 <main>
     <router-outlet></router-outlet>

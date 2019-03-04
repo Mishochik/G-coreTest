@@ -1,0 +1,22 @@
+.subjects button{
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+}
+.subjects {
+    position: relative;
+    float: left;
+    width: 33.33333333333333333333%;
+}
+.genre {
+    position: absolute;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.3);
+}
+.genre ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}

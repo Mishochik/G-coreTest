@@ -1,0 +1,34 @@
+<table width="100%" *ngIf="response">
+    <!-- <tr>
+        <td *ngIf="columns.img.visibility">{{columns.img.name}}</td>
+        <td *ngIf="columns.name.visibility">{{columns.name.name}}</td>
+        <td *ngIf="columns.tom.visibility">{{columns.tnom.name}}</td>
+        <td *ngIf="columns.url.visibility">{{columns.url.name}}</td>
+        <td *ngIf="columns.url2.visibility">{{columns.url2.name}}</td>
+        <td *ngIf="columns.url3.visibility">{{columns.url3.name}}</td>
+    </tr> -->
+    <!-- <tr *ngFor="let item of response.entries">
+        <td *ngIf="columns.img.visibility">{{item.name}}</td>
+        <td *ngIf="columns.name.visibility">{{item.edition_count}}</td>
+        <td *ngIf="columns.tom.visibility">{{item.full_url}}</td>
+        <td *ngIf="columns.url.visibility">{{item.last_update}}</td>
+        <td *ngIf="columns.url2.visibility">{{item.seed_count}}</td>
+        <td *ngIf="columns.url3.visibility">{{item.url}}</td>
+    </tr> -->
+    <tr class="tableHeader">
+        <td>Thumbnail</td>
+        <td>Title</td>
+        <td>Publish date</td>
+        <td>Authors</td>
+        <td>Publishers</td>
+        <td>Subjects</td>
+    </tr>
+    <tr *ngFor="let item of response.entries">
+        <td>{{item.name}}</td>
+        <td>{{item.edition_count}}</td>
+        <td>{{item.full_url}}</td>
+        <td>{{item.last_update}}</td>
+        <td>{{item.seed_count}}</td>
+        <td>{{item.url}}</td>
+    </tr>
+</table>

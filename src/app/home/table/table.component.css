@@ -1,0 +1,10 @@
+.columnOff {
+    display: none;
+}
+
+table td {
+   padding: 5px;
+}
+table tr:nth-child(even) {
+    background: #f0f0f0; 
+}

@@ -1,0 +1,11 @@
+<div class="columns">
+    <button (click)="checkboxes = !checkboxes">checkboxesOpen</button>
+    <div *ngIf="checkboxes" class="checkbox">
+        <ul>
+            <li *ngFor="let item of columns">
+                <input type="checkbox" checked={{item.visibility}} (click)="switch(item.id, item.visibility)"
+                    name={{item.id}} value={{item.name}}>{{item.name}}
+            </li>
+        </ul>
+    </div>
+</div>
