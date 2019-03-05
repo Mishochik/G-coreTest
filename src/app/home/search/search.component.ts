@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { BooksService } from 'src/app/books.service';
 
 @Component({
     selector: 'app-search',
@@ -9,28 +8,22 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SearchComponent implements OnInit {
 
-    constructor(private http: HttpClient) { 
-
+    constructor(private booksService: BooksService) {
     }
-    
+
+    response: any;
+    @Output() onChanged = new EventEmitter();
+
+    bookName: string;
+    // pagination должен получать от PaginationComponent
     pagination = {
         limit: 10,
         page: 1,
     }
-    bookName: string;
-    search() {
-        let options = {
-            q: this.bookName,
-            ...this.pagination,
-        };
-        this.http.get('http://openlibrary.org/search.json', toHttpObject(options)).subscribe((response => {
-
-            console.log(response);
-        }))
-
-        function toHttpObject(params) {
-            return { params }
-        }
+    clickSearch(bookName) {
+        this.response = this.booksService.search(bookName, this.pagination);
+        this.onChanged.emit(this.response);
+        debugger;
     }
 
     ngOnInit() {
