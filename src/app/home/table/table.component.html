@@ -1,4 +1,4 @@
-<table width="100%" *ngIf="response">
+<table width="100%" *ngIf="rows">
     <!-- <tr>
         <td *ngIf="columns.img.visibility">{{columns.img.name}}</td>
         <td *ngIf="columns.name.visibility">{{columns.name.name}}</td>
@@ -23,12 +23,12 @@
         <td>Publishers</td>
         <td>Subjects</td>
     </tr>
-    <tr *ngFor="let item of response.entries">
-        <td>{{item.name}}</td>
-        <td>{{item.edition_count}}</td>
-        <td>{{item.full_url}}</td>
-        <td>{{item.last_update}}</td>
-        <td>{{item.seed_count}}</td>
-        <td>{{item.url}}</td>
+    <tr *ngFor="let item of rows.docs">
+        <td>{{item.title_suggest}}</td>
+        <td>{{item.title_suggest}}</td>
+        <td>{{item.title_suggest}}</td>
+        <td>{{item.title_suggest}}</td>
+        <td>{{item.title_suggest}}</td>
+        <td>{{item.title_suggest}}</td>
     </tr>
 </table>

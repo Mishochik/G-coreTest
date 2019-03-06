@@ -10,16 +10,12 @@ export class BooksService {
 
     }
 
-
     search(bookName, pagination) {
         let options = {
             q: bookName,
             ...pagination,
         };
-        this.http.get('http://openlibrary.org/search.json', toHttpObject(options)).subscribe((response => {
-            console.log(response);
-            return response;
-        }))
+        return this.http.get('http://openlibrary.org/search.json', toHttpObject(options));
         function toHttpObject(params) {
             return { params }
         }

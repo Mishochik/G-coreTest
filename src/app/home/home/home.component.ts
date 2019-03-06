@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { BooksService } from 'src/app/books.service';
 
 @Component({
     selector: 'app-home',
@@ -7,14 +8,21 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-    constructor() {
+    constructor(private booksService: BooksService) {
 
     }
-
-    onChanged(increased){
-        debugger;
+    rows;
+    pagination = {
+        limit: 10,
+        page: 1,
     }
-    
+    onChanged(increased) {
+        this.booksService.search(increased, this.pagination).subscribe(response => {
+            this.rows = response;
+            console.log(response);
+        });
+    }
+
     ngOnInit() {
     }
 
