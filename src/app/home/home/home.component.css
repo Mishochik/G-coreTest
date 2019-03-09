@@ -1,11 +1,7 @@
 .navbar {
-    float: left;
-    width: 100%;
-    background: #ececec;
+    position: fixed;
+    left: 15px;
+    right: 15px;
+    padding: 0 15px;
+    z-index: 1;
 }
-/* .table{
-
-} */
-/* .pagination {
-
-} */

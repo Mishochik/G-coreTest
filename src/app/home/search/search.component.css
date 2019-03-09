@@ -3,10 +3,6 @@
     float: left;
     width: 33.33333333333333333333%;
 }
-/* .search input{
-
-} */
-.search button{
-    background: none;
-    border: none;
+.width {
+    width: 100%;
 }

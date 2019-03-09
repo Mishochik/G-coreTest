@@ -58,8 +58,7 @@ main {
     box-shadow: 0 2px 5px 0 rgba(0,0,0,.3);
 } 
 
-
-::-webkit-scrollbar{
+/* ::-webkit-scrollbar{
     width: 10px;
 }
 ::-webkit-scrollbar-thumb{
@@ -74,4 +73,4 @@ main {
 }
 ::-webkit-scrollbar-track{
     border-width:0;
-}
+} */

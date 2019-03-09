@@ -1,10 +1,31 @@
-.columnOff {
-    display: none;
+.table {
+    position: absolute;
+    top: 66px;
+    bottom: 56px;
+    left: 0;
+    right: 0;
+    overflow: overlay;
+}
+.pagination {
+    position: fixed;
+    left: 15px;
+    right: 15px;
+    bottom: 0;
 }
 
-table td {
-   padding: 5px;
+::-webkit-scrollbar{
+    width: 10px;
 }
-table tr:nth-child(even) {
-    background: #f0f0f0; 
+::-webkit-scrollbar-thumb{
+    border-width: 1px 1px 1px 2px;
+    border-color: #777;
+    background-color: #aaa;
+}
+::-webkit-scrollbar-thumb:hover{
+    border-width: 1px 1px 1px 2px;
+    border-color: #555;
+    background-color: #777;
+}
+::-webkit-scrollbar-track{
+    border-width:0;
 }

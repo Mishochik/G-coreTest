@@ -7,23 +7,32 @@ import { BooksService } from 'src/app/books.service';
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-    constructor(private booksService: BooksService) {
-
-    }
-    rows;
     pagination = {
         limit: 10,
         page: 1,
     }
+
+    rows:Array<any> = [];
+
+    constructor(private booksService: BooksService) {
+
+    }
+
+
     onChanged(increased) {
-        this.booksService.search(increased, this.pagination).subscribe(response => {
-            this.rows = response;
-            console.log(response);
-        });
+        console.log("increased=>",increased);
+        this.booksService
+            .search(increased, this.pagination)
+            .subscribe(response => {
+                // this.rows.push(...response) ;
+            });
     }
 
     ngOnInit() {
+    }
+
+    updatePagination({numFound,}){
+
     }
 
 }

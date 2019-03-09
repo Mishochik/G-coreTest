@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { BooksService } from 'src/app/books.service';
+import { debounceTime } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
     selector: 'app-search',
@@ -7,29 +9,16 @@ import { BooksService } from 'src/app/books.service';
     styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
+    @Output() onChanged = new Subject
+    bookName: string = '';
 
-    constructor(private booksService: BooksService) {
-
+    constructor() {
     }
 
-    @Output() onChanged = new EventEmitter();
+    ngOnInit() { }
 
-    clickSearch(bookName) {
-        this.onChanged.emit(bookName);
+    clickSearch() {
+        console.log("this.bookName=>", this.bookName);
+        this.onChanged.next(this.bookName);
     }
-
-    // pagination должен получать от PaginationComponent
-    // pagination = {
-    //     limit: 10,
-    //     page: 1,
-    // }
-    // clickSearch(bookName) {
-    //     this.response = this.booksService.search(bookName, this.pagination);
-    //     this.onChanged.emit(this.response);
-    //     debugger;
-    // }
-
-    ngOnInit() {
-    }
-
 }

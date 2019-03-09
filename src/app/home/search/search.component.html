@@ -1,4 +1,9 @@
-<div class="search">
+<!-- <div class="search">
     <input type="text" [(ngModel)]="bookName">
     <button (click)="clickSearch(bookName)">Search</button>
+</div> -->
+<div class="search example-container">
+    <mat-form-field class="width">
+            <input matInput placeholder="Input" [(ngModel)]="bookName" (input)="clickSearch()">
+    </mat-form-field>
 </div>
