@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 
-
 @Component({
     selector: 'app-table',
     templateUrl: './table.component.html',
@@ -34,15 +33,7 @@ export class TableComponent implements OnInit {
 
 }
 
-export interface PeriodicElement {
-    position: number;
-    thumbnail: string;
-    title: string;
-    publishDate: string;
-    authors: string;
-    publishers: string;
-    subjects: string;
-}
+
 const ELEMENT_DATA: PeriodicElement[] = [
     { position: 1, thumbnail: 'item.title,', title: 'item.title', publishDate: 'item.title', authors: 'item.tit', publishers: 'item.title', subjects: 'item.title' },
     { position: 2, thumbnail: 'item.title,', title: 'item.title', publishDate: 'item.title', authors: 'item.tit', publishers: 'item.title', subjects: 'item.title' },

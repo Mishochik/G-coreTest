@@ -23,7 +23,9 @@ export class BooksService {
             q: bookName,
             ...pagination,
         };
-        return this.http.get('http://openlibrary.org/search.json', toHttpObject(options)) as any;
+        return this.http.get('http://openlibrary.org/search.json', toHttpObject(options)).pipe(
+            
+        ) as any;
 
         function toHttpObject(params) {
             return { params }
