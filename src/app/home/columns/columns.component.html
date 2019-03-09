@@ -1,18 +1,6 @@
-<!-- <div class="columns">
-    <button (click)="checkboxes = !checkboxes">checkboxesOpen</button>
-    <div *ngIf="checkboxes" class="checkbox">
-        <ul>
-            <li *ngFor="let item of columns">
-                <input type="checkbox" checked={{item.visibility}} (click)="switch(item.id, item.visibility)"
-                    name={{item.id}} value={{item.name}}>{{item.name}}
-            </li>
-        </ul>
-    </div>
-</div> -->
 <div class="columns">
     <mat-form-field class="width">
-        <!-- <mat-select placeholder="Columns" [formControl]="columns" multiple> -->
-        <mat-select placeholder="Columns" multiple>
+        <mat-select placeholder="Columns" [formControl]="columnModel" multiple>
             <mat-option *ngFor="let column of columns" [value]="column">{{column}}</mat-option>
         </mat-select>
     </mat-form-field>

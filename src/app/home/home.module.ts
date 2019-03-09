@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
@@ -12,7 +12,6 @@ import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
 import { ColumnsComponent } from './columns/columns.component';
 import { SubjectsComponent } from './subjects/subjects.component';
-import { TableComponent } from './table/table.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +19,6 @@ import { TableComponent } from './table/table.component';
         SearchComponent,
         ColumnsComponent,
         SubjectsComponent,
-        TableComponent,
     ],
     imports: [
         CommonModule,
@@ -29,7 +27,8 @@ import { TableComponent } from './table/table.component';
         MatTableModule,
         MatPaginatorModule,
         MatSelectModule,
-        MatInputModule
-    ]
+        MatInputModule,
+        ReactiveFormsModule
+    ],
 })
 export class HomeModule { }

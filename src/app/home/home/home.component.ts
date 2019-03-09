@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { BooksService } from 'src/app/books.service';
+import { BooksService, ResponceInterface } from 'src/app/books.service';
 import { Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, map } from 'rxjs/operators';
 import { MatTableDataSource } from '@angular/material';
+import { BookModel } from './book.model';
 
 
 export interface PeriodicElement {
@@ -21,7 +22,7 @@ export interface PeriodicElement {
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-    displayedColumns: string[] = ['thumbnail', 'title', 'publishDate', 'authors', 'publishers', 'subjects'];
+    displayedColumns: string[] = [];
     dataSource = new MatTableDataSource<PeriodicElement>();
 
     private queryEmmiter = new Subject();
@@ -41,14 +42,28 @@ export class HomeComponent implements OnInit {
     rows: Array<any> = [];
 
     constructor(private booksService: BooksService) {
+        this.resetPagination();
         this.queryEmmiter
             .pipe(debounceTime(1000))
             .subscribe(() => this.loadData());
     }
 
+    changeShowColums(colums) {
+        this.displayedColumns.length = 0;
+        this.displayedColumns.push(...colums);
+    }
+
+    updateDate(response: ResponceInterface) {
+        response.docs = response.docs.map((doc) => new BookModel(doc));
+        return response;
+    }
+
     loadData() {
         this.booksService
             .search(this.bookTitle, this.paginationSearchOption)
+            .pipe(
+                map((data) => this.updateDate(data)),
+            )
             .subscribe(response => {
                 const pagination = {
                     numFound: response.numFound,
@@ -62,6 +77,7 @@ export class HomeComponent implements OnInit {
 
     onChanged(title) {
         this.bookTitle = title;
+        this.resetPagination();
         this.queryEmmiter.next();
     }
 
@@ -75,6 +91,12 @@ export class HomeComponent implements OnInit {
         }
         this.queryEmmiter.next();
     }
+    resetPagination() {
+        this.paginationSearchOption = {
+            limit: 10,
+            page: 1,
+        }
+    }
 
     updatePagination({ numFound, start }) {
         const limit = this.paginationSearchOption.limit
@@ -86,18 +108,3 @@ export class HomeComponent implements OnInit {
     }
 
 }
-
-
-// const ELEMENT_DATA: PeriodicElement[] = [
-//     { position: 1, thumbnail: 'item.title,', title: 'item.title', publishDate: 'item.title', authors: 'item.tit', publishers: 'item.title', subjects: 'item.title' },
-//     { position: 2, thumbnail: 'item.title,', title: 'item.title', publishDate: 'item.title', authors: 'item.tit', publishers: 'item.title', subjects: 'item.title' },
-//     { position: 3, thumbnail: 'item.title,', title: 'item.title', publishDate: 'item.title', authors: 'item.tit', publishers: 'item.title', subjects: 'item.title' },
-//     { position: 4, thumbnail: 'item.title,', title: 'item.title', publishDate: 'item.title', authors: 'item.tit', publishers: 'item.title', subjects: 'item.title' },
-//     { position: 5, thumbnail: 'item.title,', title: 'item.title', publishDate: 'item.title', authors: 'item.tit', publishers: 'item.title', subjects: 'item.title' },
-//     { position: 6, thumbnail: 'item.title,', title: 'item.title', publishDate: 'item.title', authors: 'item.tit', publishers: 'item.title', subjects: 'item.title' },
-//     { position: 7, thumbnail: 'item.title,', title: 'item.title', publishDate: 'item.title', authors: 'item.tit', publishers: 'item.title', subjects: 'item.title' },
-//     { position: 8, thumbnail: 'item.title,', title: 'item.title', publishDate: 'item.title', authors: 'item.tit', publishers: 'item.title', subjects: 'item.title' },
-//     { position: 9, thumbnail: 'item.title,', title: 'item.title', publishDate: 'item.title', authors: 'item.tit', publishers: 'item.title', subjects: 'item.title' },
-//     { position: 10, thumbnail: 'item.title,', title: 'item.title', publishDate: 'item.title', authors: 'item.tit', publishers: 'item.title', subjects: 'item.title' },
-//     { position: 11, thumbnail: 'item.title,', title: 'item.title', publishDate: 'item.title', authors: 'item.tit', publishers: 'item.title', subjects: 'item.title' },
-// ];
