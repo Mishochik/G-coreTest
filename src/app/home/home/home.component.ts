@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material';
+import { TranslateService } from '@ngx-translate/core';
+
 import { BooksService, ResponceInterface } from 'src/app/books.service';
 import { Subject } from 'rxjs';
 import { debounceTime, map } from 'rxjs/operators';
-import { MatTableDataSource } from '@angular/material';
 import { BookModel } from './book.model';
-
 
 export interface PeriodicElement {
     position: number;
@@ -15,13 +16,15 @@ export interface PeriodicElement {
     publishers: string;
     subjects: string;
 }
-
+ 
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent implements OnInit {
+
     displayedColumns: string[] = [];
     dataSource = new MatTableDataSource<PeriodicElement>();
 
@@ -41,11 +44,14 @@ export class HomeComponent implements OnInit {
 
     rows: Array<any> = [];
 
-    constructor(private booksService: BooksService) {
+    constructor(private booksService: BooksService, translate: TranslateService) {
         this.resetPagination();
         this.queryEmmiter
             .pipe(debounceTime(1000))
             .subscribe(() => this.loadData());
+
+        translate.setDefaultLang('en');
+        translate.use('en');
     }
 
     changeShowColums(colums) {
@@ -81,16 +87,16 @@ export class HomeComponent implements OnInit {
         this.queryEmmiter.next();
     }
 
-    ngOnInit() {
-    }
+    ngOnInit() { }
 
-    changePage({ pageIndex, pageSize, previousPageIndex, length }) {
+    changePage({ pageIndex }) {
         this.paginationSearchOption = {
             limit: 10,
             page: pageIndex + 1,
         }
         this.queryEmmiter.next();
     }
+
     resetPagination() {
         this.paginationSearchOption = {
             limit: 10,

@@ -1,6 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { BooksService } from 'src/app/books.service';
-import { debounceTime } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -8,12 +6,14 @@ import { Subject } from 'rxjs';
     templateUrl: './search.component.html',
     styleUrls: ['./search.component.css']
 })
+
 export class SearchComponent implements OnInit {
+
     @Output() onChanged = new Subject
+    
     bookName: string = '';
 
-    constructor() {
-    }
+    constructor() { }
 
     ngOnInit() { }
 

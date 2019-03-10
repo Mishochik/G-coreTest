@@ -15,4 +15,7 @@ ul {
 } 
 .tongue img {
     width: 30px;
-} 
+}
+a {
+    cursor: pointer;
+}

@@ -1,5 +1,6 @@
 <div class="tongue">
     <ul>
-        <li *ngFor="let item of img"><a routerLink={{item.routerLink}}><img src={{item.src}} alt={{item.alt}}></a></li>
+        <li><a (click)="useLanguage('ru')"><img src="./assets/img/ru.png" alt="ru"></a></li>
+        <li><a (click)="useLanguage('en')"><img src="./assets/img/us.png" alt="en"></a></li>
     </ul>
 </div>

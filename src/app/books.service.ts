@@ -12,11 +12,10 @@ export interface ResponceInterface {
 @Injectable({
     providedIn: 'root'
 })
+
 export class BooksService {
 
-    constructor(private http: HttpClient) {
-
-    }
+    constructor(private http: HttpClient) { }
 
     search(bookName, pagination): Observable<ResponceInterface> {
         let options = {

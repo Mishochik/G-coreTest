@@ -1,7 +1,7 @@
 <div class="columns">
     <mat-form-field class="width">
-        <mat-select placeholder="Columns" [formControl]="columnModel" multiple>
-            <mat-option *ngFor="let column of columns" [value]="column">{{column}}</mat-option>
+        <mat-select placeholder="{{'Columns' | translate}}" [formControl]="columnModel" multiple>
+            <mat-option  *ngFor="let column of columns" [value]="column">{{column | translate}}</mat-option>
         </mat-select>
     </mat-form-field>
 </div>

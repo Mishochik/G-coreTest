@@ -6,6 +6,7 @@ import { FormControl } from '@angular/forms';
     templateUrl: './subjects.component.html',
     styleUrls: ['./subjects.component.css']
 })
+
 export class SubjectsComponent implements OnInit {
 
     toppings = new FormControl();
@@ -14,6 +15,5 @@ export class SubjectsComponent implements OnInit {
     constructor() { }
 
     ngOnInit() { }
-
-
+    
 }
