@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -18,7 +18,6 @@ export class SearchComponent implements OnInit {
     ngOnInit() { }
 
     clickSearch() {
-        console.log("this.bookName=>", this.bookName);
         this.onChanged.next(this.bookName);
     }
 }

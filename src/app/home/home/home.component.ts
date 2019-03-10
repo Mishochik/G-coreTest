@@ -113,4 +113,8 @@ export class HomeComponent implements OnInit {
         }
     }
 
+    clickRow(row){
+        console.log(row);
+    }
+
 }
