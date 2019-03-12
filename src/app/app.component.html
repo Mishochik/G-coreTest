@@ -6,6 +6,8 @@
     <div class="menu float-left">
         <ul>
             <li *ngFor="let item of menu"><a routerLink={{item.routerLink}}>{{item.text | translate}}</a></li>
+            <li><a routerLink="description">book-description</a></li>
+            <li><a routerLink="home">home2</a></li>
         </ul>
     </div>
     <app-translation></app-translation>

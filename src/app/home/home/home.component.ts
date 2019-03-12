@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
-import { TranslateService } from '@ngx-translate/core';
 
 import { BooksService, ResponceInterface } from 'src/app/books.service';
 import { Subject } from 'rxjs';
@@ -16,7 +15,7 @@ export interface PeriodicElement {
     publishers: string;
     subjects: string;
 }
- 
+
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
@@ -44,14 +43,11 @@ export class HomeComponent implements OnInit {
 
     rows: Array<any> = [];
 
-    constructor(private booksService: BooksService, translate: TranslateService) {
+    constructor(private booksService: BooksService) {
         this.resetPagination();
         this.queryEmmiter
             .pipe(debounceTime(1000))
             .subscribe(() => this.loadData());
-
-        translate.setDefaultLang('en');
-        translate.use('en');
     }
 
     changeShowColums(colums) {
@@ -61,6 +57,7 @@ export class HomeComponent implements OnInit {
 
     updateDate(response: ResponceInterface) {
         response.docs = response.docs.map((doc) => new BookModel(doc));
+        // console.log('response => ', response);
         return response;
     }
 
@@ -82,6 +79,7 @@ export class HomeComponent implements OnInit {
     }
 
     onChanged(title) {
+        console.log('title=>', title)
         this.bookTitle = title;
         this.resetPagination();
         this.queryEmmiter.next();
@@ -113,7 +111,7 @@ export class HomeComponent implements OnInit {
         }
     }
 
-    clickRow(row){
+    clickRow(row) {
         console.log(row);
     }
 
