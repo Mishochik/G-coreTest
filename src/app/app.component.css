@@ -5,16 +5,18 @@
 .heder {
     position: fixed;
     z-index: 10;
-    top: 0; 
+    top: 0;
     left: 0;
     right: 0;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,.3);
-    background: #1976d2; 
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .3);
+    background: #1976d2;
     color: white;
 }
+
 .logo {
     padding: 18px;
 }
+
 h1 {
     margin: 0;
     font-size: 28px;
@@ -24,26 +26,31 @@ h1 {
 .menu {
     margin: 0 20px;
 }
+
 .menu ul {
     list-style: none;
     margin: 0;
     padding: 0;
 }
+
 .menu li {
     float: left;
     font-size: 23px;
     margin: 11px 0;
 }
+
 .menu a {
     display: block;
     padding: 10px;
     text-decoration: none;
     color: white;
 }
-.menu a:hover{
+
+.menu a:hover {
     background: #ffffff36;
 }
-.active{
+
+.active {
     background: #ffffff36;
 }
 
@@ -51,26 +58,28 @@ main {
     position: absolute;
     top: 70px;
     bottom: 0;
-    left: 0;
-    right: 0;
-    margin: 0 15px;
+    left: 15px;
+    right: 15px;
     overflow: overlay;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,.3);
-} 
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .3);
+}
 
-/* ::-webkit-scrollbar{
+::-webkit-scrollbar {
     width: 10px;
 }
-::-webkit-scrollbar-thumb{
+
+::-webkit-scrollbar-thumb {
     border-width: 1px 1px 1px 2px;
     border-color: #777;
     background-color: #aaa;
 }
-::-webkit-scrollbar-thumb:hover{
+
+::-webkit-scrollbar-thumb:hover {
     border-width: 1px 1px 1px 2px;
     border-color: #555;
     background-color: #777;
 }
-::-webkit-scrollbar-track{
-    border-width:0;
-} */
+
+::-webkit-scrollbar-track {
+    border-width: 0;
+}

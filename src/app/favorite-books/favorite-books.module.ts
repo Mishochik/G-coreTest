@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { TranslateModule } from '@ngx-translate/core';
+import {MatListModule} from '@angular/material/list';
 
 import { FavoriteBooksRoutingModule } from './favorite-books-routing.module';
 import { FavoriteBooksComponent } from './favorite-books/favorite-books.component';
-import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -12,7 +15,10 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     FavoriteBooksRoutingModule,
-    FormsModule
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatListModule,
+    TranslateModule.forChild()
   ]
 })
 export class FavoriteBooksModule { }

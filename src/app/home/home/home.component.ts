@@ -5,6 +5,7 @@ import { BooksService, ResponceInterface } from 'src/app/books.service';
 import { Subject } from 'rxjs';
 import { debounceTime, map } from 'rxjs/operators';
 import { BookModel } from './book.model';
+import { Router } from '@angular/router';
 
 export interface PeriodicElement {
     position: number;
@@ -43,7 +44,10 @@ export class HomeComponent implements OnInit {
 
     rows: Array<any> = [];
 
-    constructor(private booksService: BooksService) {
+    constructor(
+        private booksService: BooksService,
+        protected router: Router,
+    ) {
         this.resetPagination();
         this.queryEmmiter
             .pipe(debounceTime(1000))
@@ -57,7 +61,6 @@ export class HomeComponent implements OnInit {
 
     updateDate(response: ResponceInterface) {
         response.docs = response.docs.map((doc) => new BookModel(doc));
-        // console.log('response => ', response);
         return response;
     }
 
@@ -79,7 +82,6 @@ export class HomeComponent implements OnInit {
     }
 
     onChanged(title) {
-        console.log('title=>', title)
         this.bookTitle = title;
         this.resetPagination();
         this.queryEmmiter.next();
@@ -112,7 +114,8 @@ export class HomeComponent implements OnInit {
     }
 
     clickRow(row) {
-        console.log(row);
+        const id = row.edition_key[0];
+        this.router.navigate(["/books/", id]);
     }
 
 }

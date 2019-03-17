@@ -30,4 +30,8 @@ export class BooksService {
             return { params }
         }
     }
+    get(bookId:string):Observable<any>{
+        return this.http.get(`https://openlibrary.org/api/books?bibkeys=${bookId}&jscmd=data&format=json`)
+
+    }
 }

@@ -1,0 +1,23 @@
+.wrapper {
+    padding: 15px;
+}
+
+.bookCover {
+    float: left;
+    max-width: 25%;
+}
+
+.img,
+.description,
+.tags {
+    margin: 15px;
+}
+
+.bookCover img {
+    width: 100%;
+}
+
+.aboutBook {
+    float: left;
+    width: 75%;
+}
