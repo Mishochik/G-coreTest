@@ -7,18 +7,27 @@
     <div class="aboutBook">
         <div class="description">
             <mat-list>
-                <mat-list-item *ngIf="book.title"><h2>{{book.title}}</h2></mat-list-item>
-                <mat-list-item *ngIf="book.authors">{{ 'Author' | translate }}:<span *ngFor="let author of book.authors"> {{author.name}} </span></mat-list-item>
-                <mat-list-item *ngIf="book.number_of_pages">{{ 'Number of pages' | translate }}: {{book.number_of_pages}}</mat-list-item>
-                <mat-list-item *ngIf="book.publishers">{{ 'Publishers' | translate }}: <span *ngFor="let publisher of book.publishers">{{publisher.name}} </span></mat-list-item>
-                <mat-list-item *ngIf="book.publish_date">{{ 'Publish date' | translate }}: {{book.publish_date}}</mat-list-item>
+                <mat-list-item *ngIf="book.title">
+                    <h2>{{book.title}}</h2>
+                </mat-list-item>
+                <mat-list-item *ngIf="book.authors">{{ 'Author' | translate }}:<span
+                        *ngFor="let author of book.authors"> {{author.name}} </span></mat-list-item>
+                <mat-list-item *ngIf="book.number_of_pages">{{ 'Number of pages' | translate }}:
+                    {{book.number_of_pages}}</mat-list-item>
+                <mat-list-item *ngIf="book.publishers">{{ 'Publishers' | translate }}: <span
+                        *ngFor="let publisher of book.publishers">{{publisher.name}} </span></mat-list-item>
+                <mat-list-item *ngIf="book.publish_date">{{ 'Publish date' | translate }}: {{book.publish_date}}
+                </mat-list-item>
                 <mat-list-item *ngIf="book.weight">{{ 'Weight' | translate }}: {{book.weight}}</mat-list-item>
-                <mat-list-item *ngIf="book.identifiers.amazon"><a href="https://www.amazon.com/dp/{{book.identifiers.amazon}}/?tag=internetarchi-20">Amazon</a></mat-list-item>
-                <mat-list-item *ngIf="book.identifiers.google"><a href="https://books.google.ru/books?id={{book.identifiers.google}}">Google</a></mat-list-item>
+                <mat-list-item *ngIf="book.identifiers.amazon"><a
+                        href="https://www.amazon.com/dp/{{book.identifiers.amazon}}/?tag=internetarchi-20">Amazon</a>
+                </mat-list-item>
+                <mat-list-item *ngIf="book.identifiers.google"><a
+                        href="https://books.google.ru/books?id={{book.identifiers.google}}">Google</a></mat-list-item>
             </mat-list>
         </div>
         <div class="tags">
-            <app-tag></app-tag>
+            <app-tag [book]="book" [bookId]="bookId"></app-tag>
         </div>
     </div>
 </div>

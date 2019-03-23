@@ -10,16 +10,17 @@ import { BooksService } from 'src/app/books.service';
 })
 export class DetailedDescriptionComponent implements OnInit {
 
-    book:object;
+    book: object;
+    bookId: string;
     constructor(
         protected activatedRoute: ActivatedRoute,
         protected booksService: BooksService
     ) { }
 
     ngOnInit() {
-        const bookId = this.activatedRoute.snapshot.params.id;
-        this.loadBook(bookId).subscribe(data => {
-            this.book = data[bookId];
+        this.bookId = this.activatedRoute.snapshot.params.id;
+        this.loadBook(this.bookId).subscribe(data => {
+            this.book = data[this.bookId];
         })
     }
 
