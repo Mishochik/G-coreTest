@@ -35,10 +35,10 @@ export class TagComponent implements OnInit {
         const value = event.value;
 
         // Add our Tag
-        if (value.indexOf(' ') !== -1) {
+        if (value.trim().indexOf(' ') !== -1) {
             return;
         }
-        if ((value || '').trim()) {
+        if (value) {
             if (!this.tags.length)
                 this.favoriteList[this.bookId] = {
                     book: this.book,
