@@ -1,7 +1,7 @@
 <div class="tag">
     <mat-form-field>
-        <mat-select placeholder="{{'Tags' | translate}}" [formControl]="tagModel" multiple>
-            <mat-option *ngFor="let teg of tags" [value]="teg" (click)="clickTag(teg)">{{teg}}</mat-option>
+        <mat-select placeholder="{{'Tags' | translate}}" [formControl]="tagModel" multiple [(value)]="tagsSelected" (selectionChange)="changeSelect()">
+            <mat-option *ngFor="let teg of tags" [value]="teg" >{{teg}}</mat-option>
         </mat-select>
     </mat-form-field>
 </div>
@@ -9,6 +9,6 @@
 <mat-list>
     <mat-list-item *ngFor="let book of bookList">
         <a (click)="clickBook(book.book)">{{book.book.title}}</a>
-        <span> ( {{getNames(book)}} )</span>
+        <span>( {{getNames(book)}} )</span>
     </mat-list-item>
 </mat-list>

@@ -9,36 +9,25 @@ import { Router } from '@angular/router';
 })
 export class FavoriteBooksComponent implements OnInit {
 
-    favoriteList: object = JSON.parse(localStorage.getItem('favoriteList'));
-    bookList: Array<object> = Object.keys(this.favoriteList).map((key) => this.favoriteList[key]);
+    favoriteList: Array<object>;
+    bookList: Array<object> = [];
+    tagsSelected;
 
-    tags: Array<string> = this.getTagsList(this.bookList);
+    tags: Array<string> = [];
     tagModel = new FormControl();
+    includedTags: Array<string> = [];
 
     constructor(
         protected router: Router
     ) { }
 
-    getTagsList(bookList): Array<string> {
-        const tagsList = [];
+    loadTegs(bookList): Array<string> {
+        const set =new Set();
         bookList.forEach((element) => {
-            element.tags.forEach((element) => {
-                if (this.checkRepeat(tagsList, element.name))
-                    tagsList.push(element.name);
-            });
+            element.tags.forEach((tag) => set.add(tag.name));
         });
-        return tagsList;
-    }
 
-    checkRepeat(arr, name) {
-        let check = true;
-        if (!arr.length)
-            return check;
-        arr.forEach((element) => {
-            if (element === name)
-                check = false
-        })
-        return check;
+        return Array.from(set.values());
     }
 
     clickBook(book) {
@@ -49,12 +38,14 @@ export class FavoriteBooksComponent implements OnInit {
         return book.tags.map((tag) => tag.name).join(", ");
     }
 
-    clickTag(tags) {
-        debugger;
-
+    changeSelect() {
+        this.bookList = this.favoriteList.filter((item: any) => item.tags.some(tag => this.tagsSelected.some(select => tag.name === select)));
     }
 
     ngOnInit() {
+        const listFromLocalStorage = JSON.parse(localStorage.getItem('favoriteList'));
+        this.favoriteList = Object.keys(listFromLocalStorage).map((key) => listFromLocalStorage[key]);
+        this.tags = this.loadTegs(this.favoriteList);
     }
 
 }
