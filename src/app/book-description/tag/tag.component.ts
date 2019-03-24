@@ -30,21 +30,20 @@ export class TagComponent implements OnInit {
     constructor() { }
 
     add(event: MatChipInputEvent): void {
-        if (!this.tags.length)
-            this.favoriteList[this.bookId] = {
-                book: this.book,
-                tags: this.tags
-            };
 
         const input = event.input;
         const value = event.value;
 
         // Add our Tag
+        if (value.indexOf(' ') !== -1) {
+            return;
+        }
         if ((value || '').trim()) {
-            if (this.tags.length === 0) {
-
-            }
-
+            if (!this.tags.length)
+                this.favoriteList[this.bookId] = {
+                    book: this.book,
+                    tags: this.tags
+                };
             this.tags.push({ name: value.trim() });
         }
 
