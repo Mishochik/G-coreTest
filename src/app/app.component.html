@@ -8,8 +8,16 @@
             <li *ngFor="let item of menu"><a routerLink={{item.routerLink}}>{{item.text | translate}}</a></li>
         </ul>
     </div>
-    <app-translation></app-translation>
+    <app-translation class="translation"></app-translation>
+    <a (click)="burger = !burger" class="buttonBurger">&#9776;</a>
+    <div class="burger" *ngIf="burger">
+        <ul>
+            <li *ngFor="let item of menu"><a (click)="burger = !burger"routerLink={{item.routerLink}}>{{item.text | translate}}</a></li>
+        </ul>
+        <app-translation></app-translation>
+    </div>
 </header>
+<div class="burgerOff" *ngIf="burger" (click)="burger = !burger"></div>
 
 <main>
     <router-outlet></router-outlet>

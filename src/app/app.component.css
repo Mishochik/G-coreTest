@@ -14,7 +14,7 @@
 }
 
 .logo {
-    padding: 18px;
+    padding: 19px;
 }
 
 h1 {
@@ -82,4 +82,64 @@ main {
 
 ::-webkit-scrollbar-track {
     border-width: 0;
+}
+
+.burger{
+    display: none;
+    float: left;
+    width: 100%;
+}
+
+a.buttonBurger {
+    display: none;
+    cursor: pointer;
+    float: right;
+    padding: 11px 15px;
+    font-size: 35px;
+}
+
+.burgerOff {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.burger ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 15px;
+}
+
+.burger li {
+    font-size: 23px;
+}
+
+.burger a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+}
+.burger a:hover {
+    background: #ffffff36;
+}
+
+@media (max-width: 900px) {
+    .burger{
+        display: block;
+    }
+    .menu{
+        display: none;
+    }
+    .translation {
+        display: none;
+    }
+    a.buttonBurger {
+        display: block;
+    }
+    .burgerOff {
+        display: block;
+    }
 }
